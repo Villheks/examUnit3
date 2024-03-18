@@ -62,7 +62,7 @@ public class FunctionsAreApopping
         double result1 = functions.RootNumber(input1,2);
         if (result1 == expected1)
         {
-            Console.WriteLine($"🟢Test failed! RootNumber({input1}) = {result1}, Expected: {expected1}");
+            Console.WriteLine($"🟢Test passed! RootNumber({input1}) = {result1}, Expected: {expected1}");
         }
         else
         {
@@ -92,7 +92,6 @@ public class FunctionsAreApopping
         int input1 = 5;
         double expected1 = 78.5;
         double result1 = functions.AreaOfCircle(input1);
-        Console.WriteLine($"AreaOfCircle({input1}) = {result1}, Expected: {expected1}");
         if (result1 == expected1)
         {
             Console.WriteLine($"🟢Test passed! AreaOfCircle({input1}) = {result1}, Expected: {expected1}");
@@ -109,11 +108,11 @@ public class FunctionsAreApopping
         string greeting = functions.Greet(name);
         if (greeting.Contains(name))
         {
-            Console.WriteLine($"🟢 Test passed! Greet({name}) = {greeting}");
+            Console.WriteLine($"🟢Test passed! Greet({name}) = {greeting}");
         }
         else
         {
-            Console.WriteLine($"🔴 Test failed! Greet({name}) = {greeting}");
+            Console.WriteLine($"🔴Test failed! Greet({name}) = {greeting}");
         }
     }
 }
@@ -125,7 +124,7 @@ public class myFunctions
     }
     public double MmLenght(int inches)
     {
-        return 0;
+        return inches * 25.4;
     }
     public double RootNumber(int number, int decimals)
     { 
