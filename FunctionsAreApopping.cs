@@ -128,7 +128,30 @@ public class myFunctions
     }
     public double RootNumber(int number, int decimals)
     { 
-        return 0;
+        if (number < 0)
+        {
+            throw new ArgumentException("Cannot find square root of a negative number.");
+        }
+
+        if (number == 0 || number == 1)
+        {
+            return number;
+        }
+
+        double guess = number / 2; 
+
+        while (true)
+        {
+            double newGuess = 0.5 * (guess + (number / guess)); 
+
+            
+            if (Math.Abs(newGuess - guess) < 0.000001) 
+            {
+            return Math.Round(newGuess, decimals); 
+            }
+
+            guess = newGuess; 
+        }
     }
     public int CubedNumber(int number)
     {
