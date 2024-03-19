@@ -1,4 +1,6 @@
 ﻿
+#pragma warning disable CS8604
+#pragma warning disable CS8600
 public class FunctionsAreApopping
 {
     public static void Main(string[] args)
@@ -9,8 +11,33 @@ public class FunctionsAreApopping
         }
         else
         {
-            Console.WriteLine("Nothing to see here yet :P");
-        }
+            MyFunctions functions = new MyFunctions();
+            Console.WriteLine(functions.enterName);
+            string name = Console.ReadLine();
+            Console.WriteLine(functions.Greet(name));
+
+            Console.WriteLine(functions.squareANumber);
+            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine($"{functions.SquaredNumber(number)}");
+
+            Console.WriteLine(functions.convertInches);
+            double inches = double.Parse(Console.ReadLine());
+            Console.WriteLine($"{functions.MmLenght(inches)}");
+
+            Console.WriteLine(functions.findTheRoot);
+            double theRootNumber = double.Parse(Console.ReadLine());
+            Console.WriteLine(functions.RootNumber(theRootNumber,3));
+
+            Console.WriteLine(functions.cubeANumber);
+            int cubeNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine(functions.CubedNumber(cubeNumber));
+
+            Console.WriteLine(functions.findTheArea);
+            double radius = double.Parse(Console.ReadLine());
+            Console.WriteLine(functions.AreaOfCircle(radius));
+
+            Console.WriteLine(functions.thanks);
+        };
     }
     public static void RunTests()
     {
@@ -24,7 +51,7 @@ public class FunctionsAreApopping
     
     public static void TestSquaredNumber()
     {
-        myFunctions functions = new myFunctions();
+        MyFunctions functions = new MyFunctions();
         int input1 = 5;
         int expected1 = 25;
         int result1 = functions.SquaredNumber(input1);
@@ -40,7 +67,7 @@ public class FunctionsAreApopping
     
     public static void TestMmLength()
     {
-        myFunctions functions = new myFunctions();
+        MyFunctions functions = new MyFunctions();
         int input1 = 10;
         double expected1 = 254;
         double result1 = functions.MmLenght(input1);
@@ -56,7 +83,7 @@ public class FunctionsAreApopping
     
     public static void TestRootNumber()
     {
-        myFunctions functions = new myFunctions();
+        MyFunctions functions = new MyFunctions();
         int input1 = 10;
         double expected1 = 3.16;
         double result1 = functions.RootNumber(input1,2);
@@ -72,7 +99,7 @@ public class FunctionsAreApopping
     
     public static void TestCubedNumber()
     {
-        myFunctions functions = new myFunctions();
+        MyFunctions functions = new MyFunctions();
         int input1 = 3;
         int expected1 = 27;
         int result1 = functions.CubedNumber(input1);
@@ -88,7 +115,7 @@ public class FunctionsAreApopping
     
     public static void TestAreaOfCircle()
     {
-        myFunctions functions = new myFunctions();        
+        MyFunctions functions = new MyFunctions();        
         int input1 = 5;
         double expected1 = 78.5;
         double result1 = functions.AreaOfCircle(input1);
@@ -103,7 +130,7 @@ public class FunctionsAreApopping
     }
     public static void TestGreet()
     {
-       myFunctions functions = new myFunctions();
+       MyFunctions functions = new MyFunctions();
         string name = "John";
         string greeting = functions.Greet(name);
         if (greeting.Contains(name))
@@ -117,33 +144,33 @@ public class FunctionsAreApopping
     }
     
 }
-public class myFunctions
+public class MyFunctions
 {
     public int SquaredNumber(int number)
     {
        return number * number;
     }
-    public double MmLenght(int inches)
+    public double MmLenght(double inches)
     {
         return inches * 25.4;
     }
-    public double RootNumber(int number, int decimals)
+    public double RootNumber(double theRootNumber, int decimals)
     { 
-        if (number < 0)
+        if (theRootNumber < 0)
         {
             throw new ArgumentException("Cannot find square root of a negative number.");
         }
 
-        if (number == 0 || number == 1)
+        if (theRootNumber == 0 || theRootNumber == 1)
         {
-            return number;
+            return theRootNumber;
         }
 
-        double guess = number / 2; 
+        double guess = theRootNumber / 2; 
 
         while (true)
         {
-            double newGuess = 0.5 * (guess + (number / guess)); 
+            double newGuess = 0.5 * (guess + (theRootNumber / guess)); 
 
             
             if (Math.Abs(newGuess - guess) < 0.000001) 
@@ -154,28 +181,36 @@ public class myFunctions
             guess = newGuess; 
         }
     }
-    public int CubedNumber(int number)
+    public int CubedNumber(int cubeNumber)
     {
-       return number * number * number;
+       return cubeNumber * cubeNumber * cubeNumber;
     }
-    public double AreaOfCircle(int radius)
+    public double AreaOfCircle(double radius)
     {
        double pi = 3.14;
-       return radius * radius * pi;
+       double area = radius * radius * pi;
+       return area;
        
     }
-    private string[] greetings = {
-        "Hello",
-        "Hi",
-        "Hey",
-        "Greetings",
-        "Welcome"
-    };
+    
     public string Greet(string name)
     {
+        
+        string[] greetings = { "Hello", "Hi", "Hey", "Greetings", "Welcome" };
         Random rand = new Random();
         int index = rand.Next(greetings.Length);
         return $"{greetings[index]}, {name}!";
     }
+
+    public string enterName = "Enter your name :)";
+    public string squareANumber = "Enter a number to be squared";
+    public string convertInches = "Enter a length of inches to be converted to mm";
+    public string findTheRoot = "Enter a number to find the root";
+    public string cubeANumber ="Enter a number to be cubed";
+    public string findTheArea ="Enter the radius of a circle to find the area";
+    public string thanks ="Thanks for running my program :)";
     
 }
+
+    
+
