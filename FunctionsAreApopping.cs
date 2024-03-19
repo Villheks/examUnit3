@@ -155,7 +155,7 @@ public class myFunctions
     }
     public int CubedNumber(int number)
     {
-       return 0;
+       return number * number * number;
     }
     public double AreaOfCircle(int radius)
     {
