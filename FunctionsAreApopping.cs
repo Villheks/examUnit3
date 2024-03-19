@@ -115,6 +115,7 @@ public class FunctionsAreApopping
             Console.WriteLine($"🔴Test failed! Greet({name}) = {greeting}");
         }
     }
+    
 }
 public class myFunctions
 {
@@ -163,10 +164,18 @@ public class myFunctions
        return radius * radius * pi;
        
     }
-    
+    private string[] greetings = {
+        "Hello",
+        "Hi",
+        "Hey",
+        "Greetings",
+        "Welcome"
+    };
     public string Greet(string name)
     {
-        return "0";
+        Random rand = new Random();
+        int index = rand.Next(greetings.Length);
+        return $"{greetings[index]}, {name}!";
     }
     
 }
