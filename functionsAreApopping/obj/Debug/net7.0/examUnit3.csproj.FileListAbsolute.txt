@@ -1,0 +1,14 @@
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\bin\Debug\net7.0\examUnit3.exe
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\bin\Debug\net7.0\examUnit3.deps.json
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\bin\Debug\net7.0\examUnit3.runtimeconfig.json
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\bin\Debug\net7.0\examUnit3.dll
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\bin\Debug\net7.0\examUnit3.pdb
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\examUnit3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\examUnit3.AssemblyInfoInputs.cache
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\examUnit3.AssemblyInfo.cs
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\examUnit3.csproj.CoreCompileInputs.cache
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\examUnit3.dll
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\refint\examUnit3.dll
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\examUnit3.pdb
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\examUnit3.genruntimeconfig.cache
+C:\Users\anesk\Documents\Programmering\examUnits\examUnit3\obj\Debug\net7.0\ref\examUnit3.dll
