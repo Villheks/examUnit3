@@ -159,7 +159,8 @@ public class myFunctions
     }
     public double AreaOfCircle(int radius)
     {
-       return 0;
+       double pi = 3.14;
+       return radius * radius * pi;
        
     }
     
