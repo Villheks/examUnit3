@@ -1,4 +1,6 @@
-
+#pragma warning disable CS8618
+#pragma warning disable CS8625
+#pragma warning disable CS8603
 using System.Text.Json;
 
 class AwayWeGo
@@ -12,7 +14,15 @@ class AwayWeGo
         }
         else
         {
-            Console.WriteLine("Empty...For the moment :P");
+            string url = "https://crismo-turquoisejaguar.web.val.run/treeI";
+            string jsonData = await FetchJsonData(url);
+            TreeNode root = DeserializeTree(jsonData);
+            int sum = CalculateSum(root);
+            Console.WriteLine($"Sum of the full structure: {sum}");
+            int deepestLevel = FindDeepestLevel(root);
+            Console.WriteLine($"Deepest level of the structure: {deepestLevel}");
+            int nodeCount = CountNodes(root);
+            Console.WriteLine($"Number of nodes: {nodeCount}");
         }
     }
     
@@ -36,7 +46,11 @@ class AwayWeGo
     static void TestDeserializeTreeFromFile()
     {
         string jsonData = File.ReadAllText("nodes.json"); 
+
+        
         TreeNode root = DeserializeTree(jsonData);
+
+        
         if (root != null)
         {
             Console.WriteLine("DeserializeTreeFromFile:🟢Passed");
@@ -58,36 +72,93 @@ class AwayWeGo
 
     static TreeNode DeserializeTree(string jsonData)
     {
-        return null;
+
+        JsonDocument jsonDocument = JsonDocument.Parse(jsonData);
+        JsonElement rootElement = jsonDocument.RootElement;
+        return BuildTree(rootElement);
     }
 
     static TreeNode BuildTree(JsonElement element)
     {
+        
+        if (element.ValueKind == JsonValueKind.Null || element.ValueKind == JsonValueKind.Undefined)
+            return null;
+
+        if (element.ValueKind == JsonValueKind.Object)
+        {
+            int value = element.GetProperty("value").GetInt32();
+            JsonElement leftElement = element.GetProperty("left");
+            JsonElement rightElement = element.GetProperty("right");
+
+            TreeNode node = new TreeNode { Value = value };
+            node.Left = BuildTree(leftElement);
+            node.Right = BuildTree(rightElement);
+
+            return node;
+        }
         return null;
     }
     static TreeNode ParseTreeNode(string json)
     {
-        return null;
+        
+        using (JsonDocument document = JsonDocument.Parse(json))
+        {
+            JsonElement rootElement = document.RootElement;
+            return ParseTreeNode(rootElement);
+        }
     }
 
     static TreeNode ParseTreeNode(JsonElement element)
     {
-        return null;
+        TreeNode node = new TreeNode();
+        foreach (JsonProperty property in element.EnumerateObject())
+        {
+            switch (property.Name)
+            {
+                case "value":
+                    node.Value = property.Value.GetInt32();
+                    break;
+                case "left":
+                    if (!property.Value.ValueKind.Equals(JsonValueKind.Null))
+                        node.Left = ParseTreeNode(property.Value);
+                    break;
+                case "right":
+                    if (!property.Value.ValueKind.Equals(JsonValueKind.Null))
+                        node.Right = ParseTreeNode(property.Value);
+                    break;
+            }
+        }
+        return node;
     }
 
     static int CalculateSum(TreeNode node)
     {
-        return 0;
+        if (node == null)
+            return 0;
+
+        int sum = node.Value;
+        sum += CalculateSum(node.Left);
+        sum += CalculateSum(node.Right);
+        return sum;
     }
 
     static int FindDeepestLevel(TreeNode node)
     {
-        return 0;
+        if (node == null)
+            return 0;
+
+        int leftDepth = FindDeepestLevel(node.Left);
+        int rightDepth = FindDeepestLevel(node.Right);
+        return Math.Max(leftDepth, rightDepth) + 1;
     }
 
     static int CountNodes(TreeNode node)
     {
-        return 0;
+        if (node == null)
+            return 0;
+            int leftCount = CountNodes(node.Left);
+            int rightCount = CountNodes(node.Right);
+            return leftCount + rightCount + 1;
     }
 }
 class TreeNode
