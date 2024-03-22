@@ -39,8 +39,6 @@ class FlattenThoseNumbers
             }
         }
     }
-
-
     static void FlattenArrays(JsonElement element, List<int> result)
     {
         if (element.ValueKind == JsonValueKind.Array)
@@ -78,7 +76,6 @@ class FlattenThoseNumbers
             if (list1[i] != list2[i])
                 return false;
         }
-
         return true;
     }
 }
